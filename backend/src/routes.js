@@ -5,8 +5,8 @@ const router = Router()
 
 router.post('/servicos', ServicosController.Store)
 router.get('/servicos', ServicosController.Index)
-// router.get('/servicos/:id')
-// router.put('/servicos/:id')
-// router.delete('/servicos/:id')
+router.get('/servicos/:id', ServicosController.Show)
+router.put('/servicos/:id', ServicosController.Update)
+router.delete('/servicos/:id', ServicosController.Delete)
 
 export default router

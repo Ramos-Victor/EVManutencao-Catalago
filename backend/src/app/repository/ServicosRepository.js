@@ -8,10 +8,50 @@ class ServicosRepository{
         return consulta(sql, servico, "Não foi possivel criar o serviço!")
     }
 
-    findaAll(){
-        const sql = 'SELECT * FROM tb_servicos'
+    findaAll(query){
+        let { ativo } = query;
 
-        return consulta(sql, "Não foi possivel realizar a consulta!")
+        let sql = 'SELECT * FROM tb_servicos'
+
+        let params = [];
+
+        if (ativo === undefined) {
+        ativo = 'true';
+        }
+
+        if (ativo !== 'all') {
+        const ativoMap = {
+            'true': 1,
+            'false': 0,
+            '1': 1,
+            '0': 0
+        };
+
+        const valor = ativoMap[ativo];
+
+        sql += ' WHERE ativo = ?';
+        params.push(valor);
+        }
+
+        return consulta(sql,params, "Não foi possivel realizar a consulta!")
+    }
+
+    findById(id){
+        const sql = 'SELECT * FROM tb_servicos WHERE id = ?'
+
+        return consulta(sql,id,"Não foi possivel realizar a consulta!")
+    }
+
+    update(id, body){
+        const sql = 'UPDATE tb_servicos SET ? where id = ?'
+
+        return consulta(sql,[body,id],"Não foi possivel realizar a edição!")
+    }
+
+    delete(id){
+        const sql = 'UPDATE tb_servicos SET ativo = 0 where id = ?';
+
+        return consulta(sql,id,"Não foi possivel deletar o serviço!")
     }
 
 }
