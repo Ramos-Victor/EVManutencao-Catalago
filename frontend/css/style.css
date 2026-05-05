@@ -1,0 +1,346 @@
+:root {
+  --azul-principal: #03305c;
+  --azul-claro: #1e90ff;
+  --verde: #28a745;
+  --branco: #ffffff;
+  --cinza: #f5f5f5;
+  --cinza-escuro: #333;
+  --sombra: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: var(--cinza-escuro);
+  background-color: var(--cinza);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.navbar {
+  background: var(--azul-principal);
+  color: var(--branco);
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px var(--sombra);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h1 {
+  font-size: 1.5rem;
+}
+
+.navbar nav a {
+  color: var(--branco);
+  text-decoration: none;
+  margin-left: 1.5rem;
+  transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+  color: var(--azul-claro);
+}
+
+.hero {
+  background: linear-gradient(rgba(3, 48, 92, 0.8), rgba(3, 48, 92, 0.8)), url('https://via.placeholder.com/1920x600/03305c/ffffff?text=Ar+Condicionado');
+  background-size: cover;
+  background-position: center;
+  color: var(--branco);
+  padding: 120px 0 80px;
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--verde);
+  color: var(--branco);
+}
+
+.btn-primary:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--sombra);
+}
+
+.btn-secondary {
+  background: var(--azul-claro);
+  color: var(--branco);
+}
+
+.btn-secondary:hover {
+  background: #0066cc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--sombra);
+}
+
+.beneficios {
+  padding: 60px 0;
+  background: var(--branco);
+}
+
+.beneficios h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--azul-principal);
+}
+
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.beneficio-item {
+  text-align: center;
+  padding: 2rem;
+  background: var(--branco);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px var(--sombra);
+  transition: transform 0.3s;
+}
+
+.beneficio-item:hover {
+  transform: translateY(-5px);
+}
+
+.beneficio-item .icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.beneficio-item h3 {
+  margin-bottom: 1rem;
+  color: var(--azul-principal);
+}
+
+.servicos-rapidos {
+  padding: 60px 0;
+  background: var(--cinza);
+}
+
+.servicos-rapidos h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--azul-principal);
+}
+
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.servico-card {
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px var(--sombra);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.servico-card:hover {
+  transform: translateY(-5px);
+}
+
+.servico-card .icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.servico-card h3 {
+  margin-bottom: 1rem;
+  color: var(--azul-principal);
+}
+
+.cta-final {
+  padding: 60px 0;
+  background: var(--azul-principal);
+  color: var(--branco);
+  text-align: center;
+}
+
+.cta-final h2 {
+  margin-bottom: 1rem;
+}
+
+.cta-final p {
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer {
+  background: var(--cinza-escuro);
+  color: var(--branco);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.servicos-page, .produtos-page {
+  padding: 120px 0 60px;
+}
+
+.servicos-page h2, .produtos-page h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--azul-principal);
+}
+
+.card {
+  background: var(--branco);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px var(--sombra);
+  margin-bottom: 1rem;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+  color: var(--azul-principal);
+}
+
+.card p {
+  margin-bottom: 1rem;
+}
+
+.status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.status.ativo {
+  background: var(--verde);
+  color: var(--branco);
+}
+
+.status.inativo {
+  background: #dc3545;
+  color: var(--branco);
+}
+
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.produto-card {
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px var(--sombra);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.produto-card:hover {
+  transform: translateY(-5px);
+}
+
+.produto-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.produto-card h3 {
+  margin-bottom: 0.5rem;
+  color: var(--azul-principal);
+}
+
+.produto-card .preco {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--verde);
+  margin-bottom: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .navbar .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navbar nav {
+    margin-top: 1rem;
+  }
+
+  .navbar nav a {
+    margin: 0 1rem;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .beneficios-grid, .servicos-grid, .produtos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .servicos-page, .produtos-page {
+    padding: 100px 0 40px;
+  }
+}
