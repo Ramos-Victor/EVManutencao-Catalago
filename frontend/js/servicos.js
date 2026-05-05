@@ -11,14 +11,18 @@ function renderizarServicos() {
   const container = document.getElementById('lista-servicos');
 
   container.innerHTML = servicosFiltrados.map(servico => `
-    <div class="card">
+  <div class="card" id="${servico.id}">
+    <div class="card-content">
       <h3>${servico.nome}</h3>
-      <p>${servico.descricao || 'Sem descrição disponível'}</p>
-      <span class="status ${servico.ativo ? 'ativo' : 'inativo'}">
-        ${servico.ativo ? 'Ativo' : 'Inativo'}
-      </span>
+      <p class="descricao">${servico.descricao || 'Sem descrição disponível'}</p>
+      <p class="valor">Valor do serviço: <b>R$${servico.valor.toFixed(2)}</b></p>
     </div>
-  `).join('');
+    <a href="https://wa.me/5512988576544?text=Olá, gostaria de solicitar orçamento para ${servico.nome}" 
+       class="btn btn-primary" target="_blank">
+       Solicitar Orçamento
+    </a>
+  </div>
+`).join('');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
