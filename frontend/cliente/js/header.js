@@ -1,6 +1,6 @@
 const headerTemplate = `
   <div class="container">
-    <img class="logo" src="./imagens/WhatsApp Image 2026-05-04 at 23.22.14.jpeg"></img>
+   <a href="index.html"> <img class="logo" src="./imagens/logoEV.jpeg"></img></a>
     <nav>
       <a href="index.html">Home</a>
       <a href="servicos.html">Serviços</a>
