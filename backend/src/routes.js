@@ -3,6 +3,7 @@ import ServicosController from "./app/controllers/ServicosController.js";
 
 const router = Router()
 
+// Rotas para Serviços
 router.post('/servicos', ServicosController.Store)
 router.get('/servicos', ServicosController.Index)
 router.get('/servicos/:id', ServicosController.Show)

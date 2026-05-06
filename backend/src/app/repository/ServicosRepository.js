@@ -49,7 +49,7 @@ class ServicosRepository{
     }
 
     delete(id){
-        const sql = 'UPDATE tb_servicos SET ativo = 0 where id = ?';
+        const sql = 'DELETE FROM tb_servicos where id = ?';
 
         return consulta(sql,id,"Não foi possivel deletar o serviço!")
     }
