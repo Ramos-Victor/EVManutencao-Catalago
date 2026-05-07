@@ -1,11 +1,16 @@
 const headerTemplate = `
   <div class="container">
-   <a href="index.html"> <img class="logo" src="./imagens/logoEV.jpeg"></img></a>
-    <nav>
+    
+    <a href="index.html" class="logo-area">
+      <img class="logo" src="./imagens/logoEV.jpeg" alt="Logo EV">
+    </a>
+
+    <nav class="menu">
       <a href="index.html">Home</a>
       <a href="servicos.html">Serviços</a>
       <a href="produtos.html">Produtos</a>
     </nav>
+
   </div>
 `;
 
