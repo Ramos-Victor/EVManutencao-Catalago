@@ -35,6 +35,18 @@ class ProdutosController{
     
     async Show(req, res){
 
+        try{
+            const produto = await ProdutosRepository.findById(req.params.id)
+
+            res.status(200).json(produto)
+        } catch(err){
+            console.log(err)
+
+            res.status(500).json({
+                erro: 'Erro ao procurar produto!',
+                mensagem: err.message
+            })
+        }
     }
 
     async Update(req, res){
