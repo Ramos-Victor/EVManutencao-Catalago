@@ -27,8 +27,10 @@ class ProdutosRepository{
         return consulta(sql,[body,id],"Não foi possivel atualizar o produto!")
     }
 
-    delete(){
+    delete(id){
+        const sql = 'DELETE FROM tb_produtos WHERE id = ?'
 
+        return consulta(sql, id,"Não foi possivel deletar o produto!")
     }
 }
 

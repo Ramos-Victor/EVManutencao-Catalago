@@ -65,7 +65,18 @@ class ProdutosController{
     }
 
     async Delete(req, res){
+        try{    
+            const produto = await ProdutosRepository.delete(req.params.id)
 
+            res.status(200).json(produto)
+        } catch (err){
+            console.log(err)
+
+            res.status(500).json({
+                erro: 'Erro ao deletar produto',
+                message: err.message
+            })
+        }
     }
 }
 
