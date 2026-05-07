@@ -21,8 +21,10 @@ class ProdutosRepository{
         return consulta(sql,id,"Não foi possivel realizar a consulta!")
     }
 
-    update(){
+    update(body, id){
+        const sql = 'UPDATE tb_produtos SET ? WHERE id = ?'
 
+        return consulta(sql,[body,id],"Não foi possivel atualizar o produto!")
     }
 
     delete(){

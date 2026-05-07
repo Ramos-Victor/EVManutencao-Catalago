@@ -45,7 +45,7 @@ class ServicosRepository{
     update(id, body){
         const sql = 'UPDATE tb_servicos SET ? where id = ?'
 
-        return consulta(sql,[body,id],"Não foi possivel realizar a edição!")
+        return consulta(sql,[body,id],"Não foi possivel atualizar o produto!")
     }
 
     delete(id){

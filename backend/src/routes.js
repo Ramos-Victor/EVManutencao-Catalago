@@ -15,5 +15,7 @@ router.delete('/servicos/:id', ServicosController.Delete)
 router.post('/produtos', ProdutosController.Store)
 router.get('/produtos', ProdutosController.Index)
 router.get('/produtos/:id', ProdutosController.Show)
+router.put('/produtos/:id', ProdutosController.Update)
+router.delete('/produto/:id', ProdutosController.Delete)
 
 export default router
