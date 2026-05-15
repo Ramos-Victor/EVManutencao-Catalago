@@ -2,20 +2,20 @@ import { Router } from "express";
 import ServicosController from "./app/controllers/ServicosController.js";
 import ProdutosController from "./app/controllers/ProdutosController.js";
 
-const router = Router()
+const router = Router();
 
 // Rotas para Serviços
-router.post('/servicos', ServicosController.Store)
-router.get('/servicos', ServicosController.Index)
-router.get('/servicos/:id', ServicosController.Show)
-router.put('/servicos/:id', ServicosController.Update)
-router.delete('/servicos/:id', ServicosController.Delete)
+router.post("api/servicos", ServicosController.Store);
+router.get("api/servicos", ServicosController.Index);
+router.get("api/servicos/:id", ServicosController.Show);
+router.put("api/servicos/:id", ServicosController.Update);
+router.delete("api/servicos/:id", ServicosController.Delete);
 
 // Rotas para os Produtos
-router.post('/produtos', ProdutosController.Store)
-router.get('/produtos', ProdutosController.Index)
-router.get('/produtos/:id', ProdutosController.Show)
-router.put('/produtos/:id', ProdutosController.Update)
-router.delete('/produtos/:id', ProdutosController.Delete)
+router.post("api/produtos", ProdutosController.Store);
+router.get("api/produtos", ProdutosController.Index);
+router.get("api/produtos/:id", ProdutosController.Show);
+router.put("api/produtos/:id", ProdutosController.Update);
+router.delete("api/produtos/:id", ProdutosController.Delete);
 
-export default router
+export default router;
