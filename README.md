@@ -44,19 +44,19 @@ backend/src/
 
 #### Serviços
 
-- `POST /servicos` - Criar novo serviço
-- `GET /servicos` - Listar todos os serviços
-- `GET /servicos/:id` - Obter detalhes de um serviço
-- `PUT /servicos/:id` - Atualizar serviço
-- `DELETE /servicos/:id` - Deletar serviço
+- `POST api/servicos` - Criar novo serviço
+- `GET api/servicos` - Listar todos os serviços
+- `GET api/servicos/:id` - Obter detalhes de um serviço
+- `PUT api/servicos/:id` - Atualizar serviço
+- `DELETE api/servicos/:id` - Deletar serviço
 
 #### Produtos
 
-- `POST /produtos` - Criar novo produto
-- `GET /produtos` - Listar todos os produtos
-- `GET /produtos/:id` - Obter detalhes de um produto
-- `PUT /produtos/:id` - Atualizar produto
-- `DELETE /produtos/:id` - Deletar produto
+- `POST api/produtos` - Criar novo produto
+- `GET api/produtos` - Listar todos os produtos
+- `GET api/produtos/:id` - Obter detalhes de um produto
+- `PUT api/produtos/:id` - Atualizar produto
+- `DELETE api/produtos/:id` - Deletar produto
 
 ### Instalação
 
