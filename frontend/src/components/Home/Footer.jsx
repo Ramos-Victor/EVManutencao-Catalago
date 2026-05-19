@@ -45,7 +45,7 @@ function Footer() {
               <a href="/#about">Quem Somos</a>
             </li>
             <li>
-              <a href="/#services">Serviços</a>
+              <a href="/#Atendimentos">Atendimentos</a>
             </li>
             <li>
               <a href="/#contact">Contato</a>
@@ -81,7 +81,7 @@ function Footer() {
             <a href="https://www.instagram.com/ev.manutencao/">
               <i className="fab fa-instagram"></i>
             </a>
-            <a href="https://wa.me/5512988576544">
+            <a href="https://wa.me/5512988576544?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento.">
               <i className="fab fa-whatsapp"></i>
             </a>
           </div>

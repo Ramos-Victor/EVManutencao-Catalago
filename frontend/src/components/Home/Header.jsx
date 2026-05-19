@@ -14,7 +14,6 @@ function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Fecha o dropdown ao clicar fora (mobile)
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -35,21 +34,33 @@ function Header() {
     if (isMobile()) setDropdownOpen((prev) => !prev);
   };
 
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`} id="header">
       <div className="container nav-container">
         <div className="logo">
           <span>EV</span> Manutenção
         </div>
-        <nav className={`navbar ${menuOpen ? "active" : ""}`}>
+        <nav className={`navbar ${menuOpen ? "active" : ""}`} ref={menuRef}>
           <a href="#home" onClick={() => setMenuOpen(false)}>
             Início
           </a>
           <a href="#about" onClick={() => setMenuOpen(false)}>
             Quem Somos
           </a>
-          <a href="#services" onClick={() => setMenuOpen(false)}>
-            Serviços
+          <a href="#Atendimentos  " onClick={() => setMenuOpen(false)}>
+            Atendimentos
           </a>
           <a href="#contact" onClick={() => setMenuOpen(false)}>
             Contato

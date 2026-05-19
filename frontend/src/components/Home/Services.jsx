@@ -53,13 +53,13 @@ const services = [
 
 function Services() {
   return (
-    <section className="services section" id="services">
+    <section className="services section" id="Atendimentos">
       <div className="container">
         <Reveal>
           <div className="section-header">
-            <span className="section-tag">Serviços</span>
+            <span className="section-tag">Atendimentos</span>
 
-            <h2>Serviços completos para você!</h2>
+            <h2>Atendimentos completos para você!</h2>
           </div>
         </Reveal>
 

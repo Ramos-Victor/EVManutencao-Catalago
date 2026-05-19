@@ -38,7 +38,7 @@ function Hero() {
         <Reveal>
           <div className="hero-buttons">
             <a
-              href="https://wa.me/5512988576544?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento!"
+              href="https://wa.me/5512988576544?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento."
               target="_blank"
               rel="noreferrer"
               className="btn btn-outline"
