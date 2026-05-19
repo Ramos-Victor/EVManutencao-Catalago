@@ -1,188 +1,195 @@
-# EV Manutenção
+# evmanutencao
 
-Plataforma web para gerenciamento de manutenção com gestão de produtos e serviços.
+Aplicação web de catálogo e apresentação de produtos e serviços para um sistema de manutenção, com frontend em React e backend em Node.js/Express integrado a MySQL.
 
-## 🏗️ Arquitetura
+## Descrição
 
-Este é um projeto monorepo com separação clara entre frontend e backend:
+O projeto reúne duas aplicações dentro de um monorepo:
 
-```
-evmanutencao/
-├── backend/     # API REST com Node.js
-└── frontend/    # Aplicação web com React
-```
+- `frontend`: site em React para exibir serviços e produtos.
+- `backend`: API REST em Node.js que expõe operações CRUD para produtos e serviços.
 
-## 🔧 Backend
+A solução resolve a apresentação organizada de informações comerciais e disponibiliza endpoints para manipulação de dados no banco. O frontend consome a API via variável de ambiente e exibe cards, modais de detalhamento e botões de contato via WhatsApp.
 
-### Tecnologias
+## Funcionalidades
 
-- **Express.js** - Framework web
-- **MySQL** - Banco de dados
-- **Node.js** - Runtime JavaScript
-- **Nodemon** - Ferramenta de desenvolvimento com auto-reload
-- **CORS** - Suporte a requisições cross-origin
+- Listagem de serviços ativos e inativos.
+- Listagem de produtos disponíveis.
+- Abertura de modal com detalhes de produto e serviço.
+- Encaminhamento para orçamento via WhatsApp a partir dos modais.
+- API REST com operações CRUD para `produtos` e `servicos`.
+- Filtro de serviços por campo `ativo` nas consultas.
+- Roteamento de frontend com páginas para Home, Serviços, Produtos e página 404.
 
-### Estrutura
+## Tecnologias Utilizadas
 
-```
-backend/src/
-├── app/
-│   ├── controllers/
-│   │   ├── ProdutosController.js
-│   │   └── ServicosController.js
-│   ├── repository/
-│   │   ├── ProdutosRepository.js
-│   │   └── ServicosRepository.js
-│   └── database/
-│       └── conexao.js
-├── routes.js
-├── app.js
-└── server.js
-```
+- Backend
+  - Node.js
+  - Express
+  - MySQL
+  - dotenv
+  - cors
+  - nodemon
+- Frontend
+  - React 19
+  - Vite
+  - React Router DOM
+  - Framer Motion
+  - Lucide React
+- Banco de dados
+  - MySQL
+- Estilização
+  - CSS tradicional
+- Ferramentas
+  - ESLint
 
-### API REST
+## Estrutura do Projeto
 
-#### Serviços
+- `backend/`
+  - `package.json` - dependências e script de desenvolvimento.
+  - `src/server.js` - inicialização do servidor na porta `3000`.
+  - `src/app.js` - configuração do Express, CORS e JSON middleware.
+  - `src/routes.js` - rotas da API para produtos e serviços.
+  - `src/app/controllers/` - lógica de resposta para cada recurso.
+  - `src/app/repository/` - acesso ao banco de dados e queries SQL.
+  - `src/app/database/conexao.js` - conexão MySQL usando variáveis de ambiente.
+- `frontend/`
+  - `package.json` - dependências, scripts e configuração Vite.
+  - `vite.config.js` - configuração padrão do Vite.
+  - `src/main.jsx` - renderização da aplicação React.
+  - `src/App.jsx` - ponto de entrada do componente App.
+  - `src/routes.jsx` - rotas do cliente.
+  - `src/pages/` - páginas Home, Produtos, Serviços e NotFound.
+  - `src/components/` - componentes de UI, cards, modais e layout.
+  - `src/styles/` - estilos globais e específicos de páginas.
 
-- `POST api/servicos` - Criar novo serviço
-- `GET api/servicos` - Listar todos os serviços
-- `GET api/servicos/:id` - Obter detalhes de um serviço
-- `PUT api/servicos/:id` - Atualizar serviço
-- `DELETE api/servicos/:id` - Deletar serviço
+## Como Executar o Projeto
 
-#### Produtos
+### Pré-requisitos
 
-- `POST api/produtos` - Criar novo produto
-- `GET api/produtos` - Listar todos os produtos
-- `GET api/produtos/:id` - Obter detalhes de um produto
-- `PUT api/produtos/:id` - Atualizar produto
-- `DELETE api/produtos/:id` - Deletar produto
-
-### Instalação
-
-```bash
-cd backend
-npm install
-```
-
-### Desenvolvimento
-
-```bash
-npm run dev
-```
-
-O servidor iniciará com nodemon e recarregará automaticamente ao detectar mudanças.
-
-## 💻 Frontend
-
-### Tecnologias
-
-- **React 19.2.6** - Biblioteca UI
-- **Vite** - Build tool e dev server
-- **React Router DOM** - Roteamento
-- **Framer Motion** - Animações
-- **Lucide React** - Ícones
-
-### Componentes
-
-- **Header** - Navegação principal
-- **Hero** - Seção destaque
-- **About** - Sobre a empresa
-- **Services** - Exibição de serviços
-- **Differentials** - Diferenciais
-- **Testimonials** - Depoimentos
-- **Contact** - Formulário de contato
-- **Footer** - Rodapé
-- **WhatsappFloat** - Botão flutuante do WhatsApp
-- **Loader** - Animação de carregamento
-
-### Rotas
-
-- `/` - Página inicial (Home)
-- `*` - Página não encontrada (404)
-
-### Instalação
-
-```bash
-cd frontend
-npm install
-```
-
-### Desenvolvimento
-
-```bash
-npm run dev
-```
-
-A aplicação estará disponível em `http://localhost:5173` (padrão Vite).
-
-### Build
-
-```bash
-npm run build
-```
-
-### Preview
-
-```bash
-npm run preview
-```
-
-### Lint
-
-```bash
-npm run lint
-```
-
-## 📋 Padrão de Código
+- Node.js instalado
+- MySQL disponível localmente ou remotamente
 
 ### Backend
 
-- **Padrão MVC**: Controllers, Repositories e Database separados
-- **Async/Await**: Funções assíncronas para operações de banco de dados
-- **Tratamento de Erros**: Try/catch em controllers
-
-### Frontend
-
-- **Componentes Funcionais**: Apenas componentes baseados em hooks
-- **React Router v7**: Roteamento moderno
-- **Animações com Framer Motion**: Transições suaves
-
-## 🚀 Como Começar
-
-### 1. Clone o repositório
-
-```bash
-git clone <https://github.com/Ramos-Victor/EVManutencao-Catalago.git>
-cd evmanutencao
-```
-
-### 2. Configure o Backend
-
 ```bash
 cd backend
 npm install
-# Configure as variáveis de ambiente conforme necessário
+```
+
+Variáveis de ambiente do backend:
+
+```text
+DB_HOST
+DB_PORT
+DB_USER
+DB_PASSWORD
+DB_NAME
+```
+
+Em seguida:
+
+```bash
 npm run dev
 ```
 
-### 3. Configure o Frontend
+O backend escuta em `http://localhost:3000`.
+
+### Frontend
 
 ```bash
 cd frontend
 npm install
+```
+
+Variável de ambiente do frontend:
+
+```text
+VITE_API_URL
+```
+
+Exemplo:
+
+```env
+VITE_API_URL=http://localhost:3000
+```
+
+Em seguida:
+
+```bash
 npm run dev
 ```
 
-### 4. Acesse a aplicação
+O frontend roda em `http://localhost:5173` por padrão.
 
-- Frontend: `http://localhost:5173`
-- Backend API: `http://localhost:<porta>`
+### Outros scripts do frontend
 
-## 📄 Licença
+```bash
+npm run build
+npm run preview
+npm run lint
+```
 
-ISC
+## Variáveis de Ambiente
 
-## 👤 Autor
+- `DB_HOST` - host do servidor MySQL.
+- `DB_PORT` - porta do MySQL.
+- `DB_USER` - usuário do banco de dados.
+- `DB_PASSWORD` - senha do banco de dados.
+- `DB_NAME` - nome do schema/database.
+- `VITE_API_URL` - URL base da API backend usada pelo frontend.
 
-Victor
+## API / Endpoints
+
+### Serviços
+
+| Método | Rota                | Finalidade                                |
+| ------ | ------------------- | ----------------------------------------- |
+| POST   | `/api/servicos`     | Criar um novo serviço                     |
+| GET    | `/api/servicos`     | Listar serviços (opção de filtro `ativo`) |
+| GET    | `/api/servicos/:id` | Obter um serviço por ID                   |
+| PUT    | `/api/servicos/:id` | Atualizar um serviço existente            |
+| DELETE | `/api/servicos/:id` | Excluir um serviço                        |
+
+### Produtos
+
+| Método | Rota                | Finalidade                     |
+| ------ | ------------------- | ------------------------------ |
+| POST   | `/api/produtos`     | Criar um novo produto          |
+| GET    | `/api/produtos`     | Listar produtos                |
+| GET    | `/api/produtos/:id` | Obter um produto por ID        |
+| PUT    | `/api/produtos/:id` | Atualizar um produto existente |
+| DELETE | `/api/produtos/:id` | Excluir um produto             |
+
+## Banco de Dados
+
+O backend acessa duas tabelas principais:
+
+- `tb_servicos` - armazenagem de serviços com campos como `id`, `ativo`, `titulo`/`nome` e `descricao`.
+- `tb_produtos` - armazenagem de produtos com campos como `id`, `ativo`, `titulo`/`nome` e `descricao`.
+
+A camada de repositório executa consultas SQL diretas para criar, listar, buscar por ID, atualizar e deletar registros.
+
+## Interface do Sistema
+
+O frontend inclui as seguintes páginas:
+
+- `/` - Home com seções de hero, sobre, serviços, diferenciais, contato e rodapé.
+- `/Servicos` - página de serviços que carrega dados da API e exibe cards.
+- `/produtos` - página de produtos que carrega dados da API e exibe cards.
+- `*` - página de não encontrado.
+
+Componentes visuais relevantes:
+
+- `Loader` - exibe estado de carregamento.
+- `WhatsappFloat` - botão flutuante de contato via WhatsApp.
+- `ProductCard` / `ServiceCard` - cartões de resumo.
+- `ProductModal` / `ServiceModal` - modal de detalhes e botão para orçamento.
+
+## Melhorias Futuras
+
+- Adicionar validação de entrada para os endpoints do backend.
+- Incluir um arquivo `.env.example` para orientar a configuração.
+- Implementar autenticação/controle de acesso para operações CRUD.
+- Criar interface administrativa para criação, edição e exclusão de produtos e serviços.
+- Adicionar testes automatizados para frontend e backend.

@@ -1,5 +1,3 @@
-import bannerImg from "../../assets/imagens/banner.png";
-
 function Banner() {
   return (
     <section className="servicos-banner">
