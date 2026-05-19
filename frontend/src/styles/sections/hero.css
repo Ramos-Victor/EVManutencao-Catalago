@@ -1,0 +1,88 @@
+.hero {
+  position: relative;
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.82),
+    rgba(0, 0, 0, 0.55)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+.hero-badge {
+  display: inline-block;
+
+  padding: 10px 20px;
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  margin-bottom: 25px;
+
+  backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  max-width: 800px;
+}
+
+.hero h1 span {
+  color: var(--primary);
+}
+
+.hero p {
+  margin: 25px 0;
+  max-width: 650px;
+  font-size: 1.1rem;
+  color: #dbeafe;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-info {
+  margin-top: 60px;
+
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  padding: 18px 22px;
+  border-radius: 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  backdrop-filter: blur(10px);
+}
+
+.hero-card i {
+  color: var(--primary);
+  font-size: 1.3rem;
+}

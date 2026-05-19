@@ -1,5 +1,5 @@
-import backgroundHero from "../assets/imagens/bakcgroundteste.png";
-import Reveal from "./Reveal";
+import backgroundHero from "../../assets/imagens/bakcgroundteste.png";
+import Reveal from "../UI/Reveal";
 
 function Hero() {
   return (

@@ -1,5 +1,5 @@
-import equipe from "../assets/imagens/equipetrabalhando.jpeg";
-import Reveal from "./Reveal";
+import equipe from "../../assets/imagens/equipetrabalhando.jpeg";
+import Reveal from "../UI/Reveal";
 
 function About() {
   return (
