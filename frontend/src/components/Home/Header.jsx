@@ -1,24 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 
 function Header() {
   const [scrolled, setScrolled] = useState(false);
-
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  // Fecha o dropdown ao clicar fora (mobile)
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleMouseEnter = () => {
+    if (!isMobile()) setDropdownOpen(true);
+  };
+  const handleMouseLeave = () => {
+    if (!isMobile()) setDropdownOpen(false);
+  };
+  const handleClick = () => {
+    if (isMobile()) setDropdownOpen((prev) => !prev);
+  };
 
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`} id="header">
@@ -26,32 +41,34 @@ function Header() {
         <div className="logo">
           <span>EV</span> Manutenção
         </div>
-
         <nav className={`navbar ${menuOpen ? "active" : ""}`}>
-          <a href="#home">Início</a>
-
-          <a href="#about">Quem Somos</a>
-
-          <a href="#services">Serviços</a>
-
-          <a href="#contact">Contato</a>
-
+          <a href="#home" onClick={() => setMenuOpen(false)}>
+            Início
+          </a>
+          <a href="#about" onClick={() => setMenuOpen(false)}>
+            Quem Somos
+          </a>
+          <a href="#services" onClick={() => setMenuOpen(false)}>
+            Serviços
+          </a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>
+            Contato
+          </a>
           <div
             className="dropdown"
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
+            ref={dropdownRef}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
-            <button className="dropdown-btn">
+            <button className="dropdown-btn" onClick={handleClick}>
               Catálogo
               <ChevronDown
                 size={18}
                 className={`dropdown-icon ${dropdownOpen ? "rotate" : ""}`}
               />
             </button>
-
             <div className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
               <a href="/servicos">Serviços</a>
-
               <a href="/produtos">Produtos</a>
             </div>
           </div>
@@ -65,7 +82,6 @@ function Header() {
         >
           Solicitar Orçamento
         </a>
-
         <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
           <i className="fas fa-bars"></i>
         </div>
