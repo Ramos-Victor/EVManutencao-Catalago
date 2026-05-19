@@ -8,7 +8,7 @@ function Banner() {
           <span className="servicos-tag">Serviços</span>
           <h1>
             Atendimento especializado para{" "}
-            <span style={{ color: "#00a8ff" }}>Ar</span>-Condicionados
+            <span style={{ color: "#00a8ff" }}>Ar-Condicionados</span>
           </h1>
           <p>
             Conheça nossos serviços pensados para instalação, manutenção e

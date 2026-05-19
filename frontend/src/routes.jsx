@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/home/index";
 import { Servicos } from "./pages/servicos/index";
+import { Produtos } from "./pages/produtos/index";
 import { NotFound } from "./pages/not-found/index";
 
 export function AppRoutes() {
@@ -9,6 +10,7 @@ export function AppRoutes() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Servicos" element={<Servicos />} />
+        <Route path="/produtos" element={<Produtos />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
