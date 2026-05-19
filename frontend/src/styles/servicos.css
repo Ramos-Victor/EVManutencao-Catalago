@@ -1,0 +1,336 @@
+.servicos-banner {
+  padding: 120px 0 80px;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 66, 92, 0.95),
+    rgba(8, 17, 31, 0.95)
+  );
+  color: white;
+}
+
+.servicos-banner-content {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.servicos-banner-copy {
+  max-width: 640px;
+}
+
+.servicos-tag {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.servicos-banner-copy h1 {
+  margin: 1.2rem 0;
+  font-size: clamp(2rem, 8vw, 4rem);
+  line-height: 1.1;
+}
+
+.servicos-banner-copy p {
+  max-width: 560px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 1.8rem;
+}
+
+.servicos-banner-image {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.servicos-banner-card {
+  width: 100%;
+  min-height: 260px;
+  padding: 2rem;
+  border-radius: 30px;
+  background: url(../assets/imagens/banner.png) center/cover no-repeat;
+  box-shadow: var(--shadow);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: white;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.servicos-section {
+  padding: 100px 0;
+  background: #f8fbff;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 15px 0;
+  color: #0f172a;
+}
+
+.section-header p {
+  max-width: 700px;
+  margin: auto;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.servicos-card {
+  background: white;
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  transition: 0.35s ease;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.servicos-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.servicos-card-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  background: rgba(0, 168, 255, 0.1);
+
+  display: grid;
+  place-items: center;
+
+  font-size: 1.6rem;
+  color: var(--primary);
+}
+
+.status-badge {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.status-active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.servicos-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+  color: #0f172a;
+}
+
+.servicos-card p {
+  color: #64748b;
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 30px;
+}
+
+.btn-details {
+  border: none;
+  background: var(--primary);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-details:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* MODAL */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.75);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  z-index: 999;
+}
+
+.service-modal {
+  width: 100%;
+  max-width: 650px;
+  background: white;
+  border-radius: 30px;
+  padding: 40px;
+  position: relative;
+
+  animation: modalShow 0.3s ease;
+}
+
+@keyframes modalShow {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  border: none;
+  background: #f1f5f9;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+
+  cursor: pointer;
+}
+
+.modal-header {
+  margin-bottom: 30px;
+}
+
+.modal-icon {
+  width: 80px;
+  height: 80px;
+
+  border-radius: 24px;
+
+  background: rgba(0, 168, 255, 0.1);
+
+  display: grid;
+  place-items: center;
+
+  color: var(--primary);
+
+  font-size: 1.8rem;
+
+  margin-bottom: 24px;
+}
+
+.modal-header h2 {
+  font-size: 2rem;
+  color: #0f172a;
+}
+
+.modal-content p {
+  color: #475569;
+  line-height: 1.9;
+}
+
+.modal-actions {
+  margin-top: 40px;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  padding: 18px;
+  border-radius: 16px;
+
+  background: #25d366;
+  color: white;
+
+  font-weight: 700;
+  text-decoration: none;
+
+  transition: 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+  .servicos-section {
+    padding: 70px 0;
+  }
+
+  .servicos-card {
+    padding: 24px;
+  }
+
+  .service-modal {
+    padding: 28px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .servicos-banner-image {
+    display: none;
+  }
+
+  .servicos-banner-copy h1 {
+    width: 720px;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-modal {
+    border-radius: 22px;
+    padding: 24px;
+  }
+
+  .btn-whatsapp {
+    padding: 16px;
+  }
+
+  .servicos-banner-image {
+    display: none;
+  }
+
+  .servicos-banner-copy h1 {
+    width: 340px;
+  }
+}

@@ -1,8 +1,8 @@
-import app from './app.js'
+import app from "./app.js";
 
 // Define a porta 3000
 const PORT = 3000;
 
-app.listen(PORT, () =>{
-    console.log(`Servidor rodando no endereço http://localhost:${PORT}`)
-})
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Servidor rodando no endereço http://localhost:${PORT}`);
+});

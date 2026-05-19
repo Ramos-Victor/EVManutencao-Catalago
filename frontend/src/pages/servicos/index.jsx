@@ -1,32 +1,22 @@
-import { useEffect } from "react";
 import Loader from "../../components/UI/Loader";
-import Header from "../../components/Home/Header";
 import WhatsappFloat from "../../components/UI/WhatsappFloat";
+import Header from "../../components/Servicos/Header";
+import Footer from "../../components/Servicos/Footer";
+import Banner from "../../components/Servicos/Banner";
+import ServicosList from "../../components/Servicos/ServicosList";
+import "../../styles/servicos.css";
 
 export function Servicos() {
-  useEffect(() => {
-    async function buscarServicos() {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/servicos`,
-        );
-
-        const data = await response.json();
-
-        console.log(data["data"]);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    buscarServicos();
-  }, []);
-
   return (
     <>
       <Loader />
       <WhatsappFloat />
       <Header />
+      <main className="servicos-page">
+        <Banner />
+        <ServicosList />
+      </main>
+      <Footer />
     </>
   );
 }
