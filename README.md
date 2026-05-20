@@ -20,6 +20,9 @@ A solução resolve a apresentação organizada de informações comerciais e di
 - API REST com operações CRUD para `produtos` e `servicos`.
 - Filtro de serviços por campo `ativo` nas consultas.
 - Roteamento de frontend com páginas para Home, Serviços, Produtos e página 404.
+- Autenticação de administrador via JWT para rotas protegidas (CRUD).
+- Middleware de autenticação protegendo rotas de alteração/exclusão/criação.
+- Login de administrador com geração de token JWT.
 
 ## Tecnologias Utilizadas
 
@@ -29,6 +32,8 @@ A solução resolve a apresentação organizada de informações comerciais e di
   - MySQL
   - dotenv
   - cors
+  - bcryptjs
+  - jsonwebtoken
   - nodemon
 - Frontend
   - React 19
@@ -49,7 +54,11 @@ A solução resolve a apresentação organizada de informações comerciais e di
   - `package.json` - dependências e script de desenvolvimento.
   - `src/server.js` - inicialização do servidor na porta `3000`.
   - `src/app.js` - configuração do Express, CORS e JSON middleware.
-  - `src/routes.js` - rotas da API para produtos e serviços.
+  - `src/routes.js` - rotas da API para produtos, serviços e autenticação.
+    - `src/app/middleware/auth.js` - middleware de autenticação JWT para rotas protegidas.
+    - `src/app/routes/AuthRoutes.js` - rota de login de administrador.
+    - `src/app/controllers/AdminController.js` - lógica de autenticação e geração de token.
+    - `src/app/repository/AdminRepository.js` - acesso ao usuário administrador no banco.
   - `src/app/controllers/` - lógica de resposta para cada recurso.
   - `src/app/repository/` - acesso ao banco de dados e queries SQL.
   - `src/app/database/conexao.js` - conexão MySQL usando variáveis de ambiente.
@@ -141,25 +150,31 @@ npm run lint
 
 ## API / Endpoints
 
+### Autenticação
+
+| Método | Rota              | Finalidade                                 |
+| ------ | ----------------- | ------------------------------------------ |
+| POST   | `/api/auth/login` | Login de administrador (retorna token JWT) |
+
 ### Serviços
 
-| Método | Rota                | Finalidade                                |
-| ------ | ------------------- | ----------------------------------------- |
-| POST   | `/api/servicos`     | Criar um novo serviço                     |
-| GET    | `/api/servicos`     | Listar serviços (opção de filtro `ativo`) |
-| GET    | `/api/servicos/:id` | Obter um serviço por ID                   |
-| PUT    | `/api/servicos/:id` | Atualizar um serviço existente            |
-| DELETE | `/api/servicos/:id` | Excluir um serviço                        |
+| Método | Rota                | Finalidade                                | Protegido |
+| ------ | ------------------- | ----------------------------------------- | --------- |
+| POST   | `/api/servicos`     | Criar um novo serviço                     | Sim       |
+| GET    | `/api/servicos`     | Listar serviços (opção de filtro `ativo`) | Não       |
+| GET    | `/api/servicos/:id` | Obter um serviço por ID                   | Não       |
+| PUT    | `/api/servicos/:id` | Atualizar um serviço existente            | Sim       |
+| DELETE | `/api/servicos/:id` | Excluir um serviço                        | Sim       |
 
 ### Produtos
 
-| Método | Rota                | Finalidade                     |
-| ------ | ------------------- | ------------------------------ |
-| POST   | `/api/produtos`     | Criar um novo produto          |
-| GET    | `/api/produtos`     | Listar produtos                |
-| GET    | `/api/produtos/:id` | Obter um produto por ID        |
-| PUT    | `/api/produtos/:id` | Atualizar um produto existente |
-| DELETE | `/api/produtos/:id` | Excluir um produto             |
+| Método | Rota                | Finalidade                     | Protegido |
+| ------ | ------------------- | ------------------------------ | --------- |
+| POST   | `/api/produtos`     | Criar um novo produto          | Sim       |
+| GET    | `/api/produtos`     | Listar produtos                | Não       |
+| GET    | `/api/produtos/:id` | Obter um produto por ID        | Não       |
+| PUT    | `/api/produtos/:id` | Atualizar um produto existente | Sim       |
+| DELETE | `/api/produtos/:id` | Excluir um produto             | Sim       |
 
 ## Banco de Dados
 
@@ -190,6 +205,5 @@ Componentes visuais relevantes:
 
 - Adicionar validação de entrada para os endpoints do backend.
 - Incluir um arquivo `.env.example` para orientar a configuração.
-- Implementar autenticação/controle de acesso para operações CRUD.
-- Criar interface administrativa para criação, edição e exclusão de produtos e serviços.
+- Melhorar a interface administrativa para criação, edição e exclusão de produtos e serviços.
 - Adicionar testes automatizados para frontend e backend.
