@@ -23,12 +23,26 @@ class ServicosController {
 
   async Index(req, res) {
     try {
-      const servicos = await ServicosRepository.findaAll(req.query);
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
+      const offset = (page - 1) * limit;
+
+      const servicos = await ServicosRepository.findaAll(limit, offset);
+
+      const [totalResult] = await ServicosRepository.count();
+
+      const total = totalResult.TOTAL;
 
       res.status(200).json({
         success: true,
         message: "Serviços listados com sucesso!",
         data: servicos,
+        pagination: {
+          total: total,
+          page: page,
+          limit: limit,
+          totalPages: Math.ceil(total / limit),
+        },
       });
     } catch (err) {
       console.error(err);

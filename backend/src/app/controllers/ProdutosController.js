@@ -23,12 +23,26 @@ class ProdutosController {
 
   async Index(req, res) {
     try {
-      const produtos = await ProdutosRepository.findAll();
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
+      const offset = (page - 1) * limit;
+
+      const produtos = await ProdutosRepository.findAll(limit, offset);
+
+      const [totalResult] = await ProdutosRepository.count();
+
+      const total = totalResult.TOTAL;
 
       res.status(200).json({
         success: true,
         message: "Produtos listados com sucesso!",
         data: produtos,
+        pagination: {
+          total: total,
+          page: page,
+          limit: limit,
+          totalPages: Math.ceil(total / limit),
+        },
       });
     } catch (err) {
       console.log(err);

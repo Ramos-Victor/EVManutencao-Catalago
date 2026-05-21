@@ -1,59 +1,41 @@
 import { consulta } from "../database/conexao.js";
 
-class ServicosRepository{
+class ServicosRepository {
+  create(servico) {
+    const sql = "INSERT INTO tb_servicos SET ?";
 
-    create(servico){
-        const sql = 'INSERT INTO tb_servicos SET ?'
+    return consulta(sql, servico, "Não foi possivel criar o serviço!");
+  }
 
-        return consulta(sql, servico, "Não foi possivel criar o serviço!")
-    }
+  findaAll(limit, offset) {
+    const sql = "SELECT * FROM tb_servicos LIMIT ? OFFSET ?";
 
-    findaAll(query){
-        let { ativo } = query;
+    return consulta(sql, [limit, offset], "Não foi possivel consultar!");
+  }
 
-        let sql = 'SELECT * FROM tb_servicos'
+  count() {
+    const sql = "SELECT COUNT(*) AS TOTAL FROM tb_servicos";
 
-        let params = [];
+    return consulta(sql, [], "Não foi possivel ");
+  }
 
-        if (ativo === undefined) {
-        ativo = 'true';
-        }
+  findById(id) {
+    const sql = "SELECT * FROM tb_servicos WHERE id = ?";
 
-        if (ativo !== 'all') {
-        const ativoMap = {
-            'true': 1,
-            'false': 0,
-            '1': 1,
-            '0': 0
-        };
+    return consulta(sql, id, "Não foi possivel realizar a consulta!");
+  }
 
-        const valor = ativoMap[ativo];
+  update(id, body) {
+    const sql = "UPDATE tb_servicos SET ? where id = ?";
 
-        sql += ' WHERE ativo = ?';
-        params.push(valor);
-        }
+    return consulta(sql, [body, id], "Não foi possivel atualizar o produto!");
+  }
 
-        return consulta(sql,params, "Não foi possivel realizar a consulta!")
-    }
+  delete(id) {
+    const sql = "DELETE FROM tb_servicos where id = ?";
 
-    findById(id){
-        const sql = 'SELECT * FROM tb_servicos WHERE id = ?'
-
-        return consulta(sql,id,"Não foi possivel realizar a consulta!")
-    }
-
-    update(id, body){
-        const sql = 'UPDATE tb_servicos SET ? where id = ?'
-
-        return consulta(sql,[body,id],"Não foi possivel atualizar o produto!")
-    }
-
-    delete(id){
-        const sql = 'DELETE FROM tb_servicos where id = ?';
-
-        return consulta(sql,id,"Não foi possivel deletar o serviço!")
-    }
-
+    return consulta(sql, id, "Não foi possivel deletar o serviço!");
+  }
 }
 
-export default new ServicosRepository
+export default new ServicosRepository();

@@ -1,37 +1,42 @@
 import { consulta } from "../database/conexao.js";
 
-class ProdutosRepository{
+class ProdutosRepository {
+  create(produto) {
+    const sql = "INSERT INTO tb_produtos SET ?";
 
-    create(produto){
-       const sql = 'INSERT INTO tb_produtos SET ?'
+    console.log(produto);
+    return consulta(sql, produto, "Não foi possivel criar o produto!");
+  }
 
-       console.log(produto)
-       return consulta(sql,produto, "Não foi possivel criar o produto!")
-    }
+  findAll(limit, offset) {
+    const sql = "SELECT * FROM tb_produtos LIMIT ? OFFSET ?";
 
-    findAll(){
-        const sql = 'SELECT * FROM tb_produtos'
+    return consulta(sql, [limit, offset], "Não foi possivel consultar!");
+  }
 
-        return consulta(sql,[],"Não foi possivel consultar!")
-    }
+  count() {
+    const sql = "SELECT COUNT(*) AS TOTAL FROM tb_produtos";
 
-    findById(id){
-        const sql = 'SELECT * FROM tb_produtos WHERE id = ?'
+    return consulta(sql, [], "Não foi possivel contar os produtos!");
+  }
 
-        return consulta(sql,id,"Não foi possivel realizar a consulta!")
-    }
+  findById(id) {
+    const sql = "SELECT * FROM tb_produtos WHERE id = ?";
 
-    update(body, id){
-        const sql = 'UPDATE tb_produtos SET ? WHERE id = ?'
+    return consulta(sql, id, "Não foi possivel realizar a consulta!");
+  }
 
-        return consulta(sql,[body,id],"Não foi possivel atualizar o produto!")
-    }
+  update(body, id) {
+    const sql = "UPDATE tb_produtos SET ? WHERE id = ?";
 
-    delete(id){
-        const sql = 'DELETE FROM tb_produtos WHERE id = ?'
+    return consulta(sql, [body, id], "Não foi possivel atualizar o produto!");
+  }
 
-        return consulta(sql, id,"Não foi possivel deletar o produto!")
-    }
+  delete(id) {
+    const sql = "DELETE FROM tb_produtos WHERE id = ?";
+
+    return consulta(sql, id, "Não foi possivel deletar o produto!");
+  }
 }
 
-export default new ProdutosRepository
+export default new ProdutosRepository();
