@@ -1,0 +1,75 @@
+import { useEffect, useState } from "react";
+
+export default function ServicosCrudList({ onEdit, onDelete, token }) {
+  const [servicos, setServicos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function fetchServicos() {
+      setLoading(true);
+      setError("");
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/servicos`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          },
+        );
+        const data = await res.json();
+        if (!res.ok)
+          throw new Error(data.message || "Erro ao carregar serviços.");
+        setServicos(data.data || []);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchServicos();
+  }, [token]);
+
+  return (
+    <div className="crud-list">
+      {loading && <div>Carregando...</div>}
+      {error && <div className="form-error">{error}</div>}
+      {!loading && !error && servicos.length === 0 && (
+        <div>Nenhum serviço encontrado.</div>
+      )}
+      {!loading && !error && servicos.length > 0 && (
+        <table className="crud-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {servicos.map((s) => (
+              <tr key={s.id}>
+                <td>{s.id}</td>
+                <td>{s.nome}</td>
+                <td>{s.descricao}</td>
+                <td>{s.ativo ? "Ativo" : "Inativo"}</td>
+                <td>
+                  <button className="btn btn-outline" onClick={() => onEdit(s)}>
+                    Editar
+                  </button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => onDelete(s)}
+                  >
+                    Excluir
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
+}
