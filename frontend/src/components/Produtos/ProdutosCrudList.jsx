@@ -34,6 +34,7 @@ export default function ProdutosCrudList({ onEdit, onDelete, token }) {
         }
 
         setProdutos(data.data || []);
+        setTotalPages(data.pagination.totalPages);
       } catch (err) {
         setError(err.message);
       } finally {

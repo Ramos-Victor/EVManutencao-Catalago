@@ -12,25 +12,28 @@ function ServiceModal({ servico, onClose }) {
   );
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="service-modal" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>
+    <div className="modal-overlayCliente" onClick={onClose}>
+      <div
+        className="service-modalCliente"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="modal-closeCliente" onClick={onClose}>
           <X size={22} />
         </button>
 
-        <div className="modal-header">
-          <div className="modal-icon">
+        <div className="modal-headerCliente">
+          <div className="modal-iconCliente">
             <i className="fas fa-tools" />
           </div>
 
           <h2>{title}</h2>
         </div>
 
-        <div className="modal-content">
+        <div className="modal-contentCliente">
           <p>{description}</p>
         </div>
 
-        <div className="modal-actions">
+        <div className="modal-actionsCliente">
           <a
             href={`https://wa.me/5512988576544?text=${whatsappMessage}`}
             target="_blank"

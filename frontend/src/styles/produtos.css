@@ -189,7 +189,7 @@
   color: #dc2626;
 }
 
-.modal-overlay {
+.modal-overlayCliente {
   position: fixed;
   inset: 0;
   background: rgba(2, 6, 23, 0.75);
@@ -200,17 +200,17 @@
   z-index: 999;
 }
 
-.product-modal {
+.product-modalCliente {
   width: 100%;
   max-width: 650px;
   background: white;
   border-radius: 30px;
   padding: 40px;
   position: relative;
-  animation: modalShow 0.3s ease;
+  animation: modalShowCliente 0.3s ease;
 }
 
-@keyframes modalShow {
+@keyframes modalShowCliente {
   from {
     opacity: 0;
     transform: translateY(25px);
@@ -222,7 +222,7 @@
   }
 }
 
-.modal-close {
+.modal-closeCliente {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -234,11 +234,11 @@
   cursor: pointer;
 }
 
-.modal-header {
+.modal-headerCliente {
   margin-bottom: 30px;
 }
 
-.modal-icon {
+.modal-iconCliente {
   width: 80px;
   height: 80px;
   border-radius: 24px;
@@ -250,17 +250,17 @@
   margin-bottom: 24px;
 }
 
-.modal-header h2 {
+.modal-headerCliente h2 {
   font-size: 2rem;
   color: #0f172a;
 }
 
-.modal-content p {
+.modal-contentCliente p {
   color: #475569;
   line-height: 1.9;
 }
 
-.modal-actions {
+.modal-actionsCliente {
   margin-top: 40px;
 }
 
@@ -289,6 +289,10 @@
 
   .produtos-banner-image {
     justify-content: center;
+  }
+
+  .btn-orcamento {
+    display: none !important;
   }
 }
 
