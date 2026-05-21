@@ -13,16 +13,15 @@ A solução resolve a apresentação organizada de informações comerciais e di
 
 ## Funcionalidades
 
-- Listagem de serviços ativos e inativos.
-- Listagem de produtos disponíveis.
-- Abertura de modal com detalhes de produto e serviço.
-- Encaminhamento para orçamento via WhatsApp a partir dos modais.
-- API REST com operações CRUD para `produtos` e `servicos`.
-- Filtro de serviços por campo `ativo` nas consultas.
-- Roteamento de frontend com páginas para Home, Serviços, Produtos e página 404.
-- Autenticação de administrador via JWT para rotas protegidas (CRUD).
-- Middleware de autenticação protegendo rotas de alteração/exclusão/criação.
-- Login de administrador com geração de token JWT.
+- Listagem pública de serviços e produtos com visual moderno e responsivo.
+- Modal de detalhes e botão de orçamento via WhatsApp.
+- Área administrativa protegida por autenticação JWT (login de administrador).
+- CRUD completo de produtos e serviços no painel admin, com formulários, validação, loading e tratamento de erros.
+- Proteção de rotas administrativas: apenas usuários autenticados acessam o CRUD.
+- Persistência de sessão do administrador (token salvo/localStorage).
+- Logout seguro e redirecionamento automático.
+- Componentização e estilização profissional, com CSS escopado e responsivo.
+- Experiência fluida em desktop, tablet e mobile.
 
 ## Tecnologias Utilizadas
 
@@ -187,23 +186,28 @@ A camada de repositório executa consultas SQL diretas para criar, listar, busca
 
 ## Interface do Sistema
 
-O frontend inclui as seguintes páginas:
+### Frontend
 
-- `/` - Home com seções de hero, sobre, serviços, diferenciais, contato e rodapé.
-- `/Servicos` - página de serviços que carrega dados da API e exibe cards.
-- `/produtos` - página de produtos que carrega dados da API e exibe cards.
-- `*` - página de não encontrado.
+- `/` — Home: apresentação institucional, diferenciais, contato.
+- `/Servicos` — Listagem pública de serviços, cards e modais.
+- `/produtos` — Listagem pública de produtos, cards e modais.
+- `/login` — Tela de login do administrador, com validação e feedback.
+- `/admin` — Dashboard administrativo com atalhos para CRUD.
+- `/admin/produtos` — CRUD completo de produtos (listar, criar, editar, excluir).
+- `/admin/servicos` — CRUD completo de serviços (listar, criar, editar, excluir).
+- `*` — Página de não encontrado.
 
-Componentes visuais relevantes:
+#### Componentes visuais e padrões
 
-- `Loader` - exibe estado de carregamento.
-- `WhatsappFloat` - botão flutuante de contato via WhatsApp.
-- `ProductCard` / `ServiceCard` - cartões de resumo.
-- `ProductModal` / `ServiceModal` - modal de detalhes e botão para orçamento.
+- Loader animado, botão flutuante de WhatsApp, cards, modais, formulários e navegação responsiva.
+- CSS escopado por domínio, sem conflitos globais.
+- Layout do admin moderno, com dashboard e navegação clara.
 
 ## Melhorias Futuras
 
 - Adicionar validação de entrada para os endpoints do backend.
 - Incluir um arquivo `.env.example` para orientar a configuração.
-- Melhorar a interface administrativa para criação, edição e exclusão de produtos e serviços.
+- Adicionar paginação e busca nos CRUDs do admin.
+- Melhorar feedback visual de sucesso/erro nas ações administrativas.
 - Adicionar testes automatizados para frontend e backend.
+- Permitir upload de imagens para produtos e serviços.
