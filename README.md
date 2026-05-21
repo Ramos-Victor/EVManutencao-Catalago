@@ -1,6 +1,6 @@
 # evmanutencao
 
-Aplicação web de catálogo e apresentação de produtos e serviços para um sistema de manutenção, com frontend em React e backend em Node.js/Express integrado a MySQL.
+Aplicação web de catálogo e apresentação de produtos e serviços para a empresa EV MANUTENÇÃO, com frontend em React e backend em Node.js/Express integrado a MySQL.
 
 ## Descrição
 
@@ -34,6 +34,7 @@ A solução resolve a apresentação organizada de informações comerciais e di
   - bcryptjs
   - jsonwebtoken
   - nodemon
+  - Postman
 - Frontend
   - React 19
   - Vite
