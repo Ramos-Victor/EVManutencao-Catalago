@@ -1,0 +1,109 @@
+.produtos-form-wrapper {
+  width: 100%;
+}
+.produtos-form {
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  border-radius: 24px;
+  padding: 32px;
+  border: 1px solid #e2e8f0;
+  box-shadow:
+    0 12px 30px rgba(15, 23, 42, 0.08),
+    0 4px 10px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.produtos-form-header h2 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+.produtos-form-header p {
+  color: #64748b;
+}
+.produtos-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.produtos-form-group label {
+  font-weight: 600;
+  color: #334155;
+}
+.produtos-form-group input,
+.produtos-form-group textarea {
+  border: 1px solid #dbe4f0;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.2s ease;
+  background: white;
+}
+.produtos-form-group input:focus,
+.produtos-form-group textarea:focus {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12);
+}
+.produtos-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #334155;
+  font-weight: 500;
+}
+.produtos-checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: #0ea5e9;
+}
+.produtos-error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  color: #dc2626;
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
+}
+.produtos-actions {
+  display: flex;
+  gap: 14px;
+}
+.produtos-btn-primary,
+.produtos-btn-outline {
+  height: 50px;
+  border-radius: 14px;
+  border: none;
+  padding: 0 22px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.produtos-btn-primary {
+  background: linear-gradient(135deg, #06b6d4, #2563eb);
+  color: white;
+}
+.produtos-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.22);
+}
+.produtos-btn-outline {
+  background: #eef2ff;
+  color: #2563eb;
+}
+.produtos-btn-outline:hover {
+  background: #dbeafe;
+}
+@media (max-width: 768px) {
+  .produtos-form {
+    padding: 22px;
+  }
+  .produtos-actions {
+    flex-direction: column;
+  }
+  .produtos-btn-primary,
+  .produtos-btn-outline {
+    width: 100%;
+  }
+}
