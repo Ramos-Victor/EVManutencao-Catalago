@@ -37,6 +37,7 @@ class AdminController {
 
       return res.json({
         token,
+        nome: usuario.nome,
       });
     } catch (err) {
       console.error(err);

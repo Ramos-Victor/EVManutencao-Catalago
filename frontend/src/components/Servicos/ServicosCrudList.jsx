@@ -40,7 +40,6 @@ export default function ServicosCrudList({ onEdit, onDelete, token }) {
         <table className="crud-table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Nome</th>
               <th>Descrição</th>
               <th>Status</th>
@@ -50,7 +49,6 @@ export default function ServicosCrudList({ onEdit, onDelete, token }) {
           <tbody>
             {servicos.map((s) => (
               <tr key={s.id}>
-                <td>{s.id}</td>
                 <td>{s.nome}</td>
                 <td>{s.descricao}</td>
                 <td>{s.ativo ? "Ativo" : "Inativo"}</td>

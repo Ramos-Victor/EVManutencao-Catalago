@@ -1,14 +1,28 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 import { useAuth } from "../../context/AuthContext";
+
 import ServicosCrudList from "../../components/Servicos/ServicosCrudList";
 import ServicosCrudForm from "../../components/Servicos/ServicosCrudForm";
 
+import ConfirmModal from "../../components/UI/confirm-modal";
+
 export default function ServicosCrud() {
   const { token } = useAuth();
+
   const [editing, setEditing] = useState(null);
+
   const [showForm, setShowForm] = useState(false);
+
   const [refresh, setRefresh] = useState(0);
+
+  const [deleteModal, setDeleteModal] = useState(false);
+
+  const [selectedServico, setSelectedServico] = useState(null);
+
+  const [deleteLoading, setDeleteLoading] = useState(false);
+
   const navigate = useNavigate();
 
   async function handleSave(servico) {
@@ -30,17 +44,44 @@ export default function ServicosCrud() {
   }
 
   async function handleDelete(servico) {
-    if (!window.confirm("Tem certeza que deseja excluir este serviço?")) return;
-    const res = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/servicos/${servico.id}`,
-      {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      },
-    );
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.message || "Erro ao excluir serviço.");
-    setRefresh((r) => r + 1);
+    setSelectedServico(servico);
+
+    setDeleteModal(true);
+  }
+
+  async function confirmDelete() {
+    if (!selectedServico) return;
+
+    try {
+      setDeleteLoading(true);
+
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/servicos/${selectedServico.id}`,
+        {
+          method: "DELETE",
+
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Erro ao excluir produto.");
+      }
+
+      setRefresh((r) => r + 1);
+
+      setDeleteModal(false);
+
+      setSelectedServico(null);
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setDeleteLoading(false);
+    }
   }
 
   return (
@@ -84,6 +125,15 @@ export default function ServicosCrud() {
           />
         </>
       )}
+
+      <ConfirmModal
+        open={deleteModal}
+        title="Excluir servico"
+        message={`Deseja realmente excluir o servico "${selectedServico?.nome}"?`}
+        onConfirm={confirmDelete}
+        onCancel={() => setDeleteModal(false)}
+        loading={deleteLoading}
+      />
     </div>
   );
 }

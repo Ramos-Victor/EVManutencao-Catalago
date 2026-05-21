@@ -54,7 +54,6 @@ export default function ProdutosCrudList({ onEdit, onDelete, token }) {
         <table className="crud-table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Nome</th>
               <th>Descrição</th>
               <th>Status</th>
@@ -65,8 +64,6 @@ export default function ProdutosCrudList({ onEdit, onDelete, token }) {
           <tbody>
             {produtos.map((p) => (
               <tr key={p.id}>
-                <td>{p.id}</td>
-
                 <td>{p.nome}</td>
 
                 <td>{p.descricao}</td>
