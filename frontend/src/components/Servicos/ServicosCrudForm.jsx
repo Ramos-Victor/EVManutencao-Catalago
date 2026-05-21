@@ -46,7 +46,7 @@ export default function ServicosCrudForm({ servico, onSave, onCancel }) {
         <div className="servicos-form-group">
           {" "}
           <label>Nome do Serviço</label>{" "}
-          <input
+          <textarea
             type="text"
             name="nome"
             value={form.nome}
@@ -63,7 +63,6 @@ export default function ServicosCrudForm({ servico, onSave, onCancel }) {
             value={form.descricao}
             onChange={handleChange}
             placeholder="Descreva o serviço"
-            rows={5}
             required
           />{" "}
         </div>{" "}

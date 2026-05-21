@@ -46,7 +46,7 @@ export default function ProdutosCrudForm({ produto, onSave, onCancel }) {
         <div className="produtos-form-group">
           {" "}
           <label>Nome do Produto</label>{" "}
-          <input
+          <textarea
             type="text"
             name="nome"
             value={form.nome}
@@ -63,7 +63,6 @@ export default function ProdutosCrudForm({ produto, onSave, onCancel }) {
             value={form.descricao}
             onChange={handleChange}
             placeholder="Descreva o produto"
-            rows={5}
             required
           />{" "}
         </div>{" "}

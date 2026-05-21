@@ -190,7 +190,7 @@
 /* CRUD */
 
 .admin-crud-page {
-  max-width: 1250px;
+  max-width: 90%;
 
   margin: 40px auto;
 
@@ -391,22 +391,18 @@
   }
 
   .crud-table td:nth-child(1)::before {
-    content: "ID";
-  }
-
-  .crud-table td:nth-child(2)::before {
     content: "Nome";
   }
 
-  .crud-table td:nth-child(3)::before {
+  .crud-table td:nth-child(2)::before {
     content: "Descrição";
   }
 
-  .crud-table td:nth-child(4)::before {
+  .crud-table td:nth-child(3)::before {
     content: "Status";
   }
 
-  .crud-table td:nth-child(5)::before {
+  .crud-table td:nth-child(4)::before {
     content: "Ações";
   }
 
@@ -438,6 +434,8 @@
 @media (max-width: 768px) {
   .admin-header-content {
     padding: 16px;
+
+    font-size: 0.8rem;
 
     flex-direction: column;
 
@@ -475,6 +473,12 @@
 
     margin-left: 0 !important;
   }
+
+  .admin-crud-page h2 {
+    font-size: 1.25rem;
+
+    font-weight: 800;
+  }
 }
 
 @media (max-width: 480px) {
@@ -485,4 +489,12 @@
   .admin-header-content > span {
     font-size: 1.15rem;
   }
+}
+
+.pagination {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 5px;
 }
