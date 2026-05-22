@@ -59,7 +59,7 @@ function Header() {
           <a href="#about" onClick={() => setMenuOpen(false)}>
             Quem Somos
           </a>
-          <a href="#Atendimentos  " onClick={() => setMenuOpen(false)}>
+          <a href="#Atendimentos" onClick={() => setMenuOpen(false)}>
             Atendimentos
           </a>
           <a href="#contact" onClick={() => setMenuOpen(false)}>
