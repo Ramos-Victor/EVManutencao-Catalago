@@ -1,6 +1,6 @@
 # evmanutencao
 
-Aplicação web de catálogo e apresentação de produtos e serviços para a empresa EV MANUTENÇÃO, com frontend em React e backend em Node.js/Express integrado a MySQL.
+Aplicação web de catálogo e apresentação de produtos e serviços para a empresa EV MANUTENÇÃO, com frontend em React e backend em Node.js/Express integrado ao Postgres.
 
 ## Descrição
 
@@ -28,7 +28,7 @@ A solução resolve a apresentação organizada de informações comerciais e di
 - Backend
   - Node.js
   - Express
-  - MySQL
+  - Postgres
   - dotenv
   - cors
   - bcryptjs
@@ -42,11 +42,9 @@ A solução resolve a apresentação organizada de informações comerciais e di
   - Framer Motion
   - Lucide React
 - Banco de dados
-  - MySQL
+  - Postgres
 - Estilização
   - CSS tradicional
-- Ferramentas
-  - ESLint
 
 ## Estrutura do Projeto
 
@@ -77,7 +75,7 @@ A solução resolve a apresentação organizada de informações comerciais e di
 ### Pré-requisitos
 
 - Node.js instalado
-- MySQL disponível localmente ou remotamente
+- Postgress disponível localmente ou remotamente
 
 ### Backend
 
@@ -89,11 +87,7 @@ npm install
 Variáveis de ambiente do backend:
 
 ```text
-DB_HOST
-DB_PORT
-DB_USER
-DB_PASSWORD
-DB_NAME
+DATABASE_URL
 ```
 
 Em seguida:
@@ -138,15 +132,6 @@ npm run build
 npm run preview
 npm run lint
 ```
-
-## Variáveis de Ambiente
-
-- `DB_HOST` - host do servidor MySQL.
-- `DB_PORT` - porta do MySQL.
-- `DB_USER` - usuário do banco de dados.
-- `DB_PASSWORD` - senha do banco de dados.
-- `DB_NAME` - nome do schema/database.
-- `VITE_API_URL` - URL base da API backend usada pelo frontend.
 
 ## API / Endpoints
 
@@ -197,18 +182,3 @@ A camada de repositório executa consultas SQL diretas para criar, listar, busca
 - `/admin/produtos` — CRUD completo de produtos (listar, criar, editar, excluir).
 - `/admin/servicos` — CRUD completo de serviços (listar, criar, editar, excluir).
 - `*` — Página de não encontrado.
-
-#### Componentes visuais e padrões
-
-- Loader animado, botão flutuante de WhatsApp, cards, modais, formulários e navegação responsiva.
-- CSS escopado por domínio, sem conflitos globais.
-- Layout do admin moderno, com dashboard e navegação clara.
-
-## Melhorias Futuras
-
-- Adicionar validação de entrada para os endpoints do backend.
-- Incluir um arquivo `.env.example` para orientar a configuração.
-- Adicionar paginação e busca nos CRUDs do admin.
-- Melhorar feedback visual de sucesso/erro nas ações administrativas.
-- Adicionar testes automatizados para frontend e backend.
-- Permitir upload de imagens para produtos e serviços.
