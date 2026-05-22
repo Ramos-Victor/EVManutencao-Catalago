@@ -87,7 +87,7 @@ function Header() {
 
         <a
           href="https://wa.me/5512988576544?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento!"
-          className="btn btn-primary nav-btn"
+          className="btn btn-primary nav-btn btnorcamento"
           target="_blank"
           rel="noreferrer"
         >

@@ -453,6 +453,10 @@ a {
   .hero h1 {
     font-size: 3rem;
   }
+
+  .btnorcamento {
+    display: none !important;
+  }
 }
 @media (max-width: 768px) {
   .navbar {
