@@ -1,10 +1,13 @@
 import { consulta } from "../database/conexao.js";
 
 class AdminRepository {
-  login(admin) {
-    const sql = "SELECT * FROM tb_admin WHERE nome = ?";
+  login(nome) {
+    const sql = `
+      SELECT * FROM tb_admin
+      WHERE nome = $1
+    `;
 
-    return consulta(sql, [admin], "Não foi possivel achar o usuario");
+    return consulta(sql, [nome], "Não foi possivel achar o usuario");
   }
 }
 

@@ -27,7 +27,7 @@ class ServicosController {
       const limit = parseInt(req.query.limit) || 10;
       const offset = (page - 1) * limit;
 
-      const servicos = await ServicosRepository.findaAll(limit, offset);
+      const servicos = await ServicosRepository.findAll(limit, offset);
 
       const [totalResult] = await ServicosRepository.count();
 
