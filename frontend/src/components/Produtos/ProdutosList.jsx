@@ -8,21 +8,26 @@ function ProdutosList() {
   const [error, setError] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  const [page, setPage] = useState(1);
+
+  const [totalPages, setTotalPages] = useState(1);
+
   useEffect(() => {
     async function fetchProdutos() {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/produtos`,
+          `${import.meta.env.VITE_API_URL}/api/produtos?page=${page}&limit=6`,
         );
-        const json = await response.json();
+        const data = await response.json();
 
         if (!response.ok) {
           throw new Error(
-            json.message || "Não foi possível carregar os produtos.",
+            data.message || "Não foi possível carregar os produtos.",
           );
         }
 
-        setProdutos(json?.data ?? []);
+        setProdutos(data.data ?? []);
+        setTotalPages(data.pagination?.totalPages ?? 1);
       } catch (err) {
         setError(err.message || "Erro ao carregar os produtos.");
       } finally {
@@ -31,7 +36,9 @@ function ProdutosList() {
     }
 
     fetchProdutos();
-  }, []);
+  }, [page]);
+
+  const produtosAtivos = produtos.filter((produto) => produto.ativo != false);
 
   return (
     <>
@@ -48,9 +55,9 @@ function ProdutosList() {
             <div className="produtos-state produtos-state-error">
               Não foi possível carregar os produtos. {error}
             </div>
-          ) : produtos.length > 0 ? (
+          ) : produtosAtivos.length > 0 ? (
             <div className="produtos-grid">
-              {produtos.map((produto) => (
+              {produtosAtivos.map((produto) => (
                 <ProductCard
                   key={produto.id ?? produto.nome ?? produto.titulo}
                   produto={produto}
@@ -65,7 +72,31 @@ function ProdutosList() {
           )}
         </div>
       </section>
+      {produtosAtivos.length > 0 ? (
+        <div className="pagination">
+          <button
+            className="btn btn-outline"
+            disabled={page === 1}
+            onClick={() => setPage(page - 1)}
+          >
+            Anterior
+          </button>
 
+          <span>
+            {page} de {totalPages}
+          </span>
+
+          <button
+            className="btn btn-outline"
+            disabled={page === totalPages}
+            onClick={() => setPage(page + 1)}
+          >
+            Próxima
+          </button>
+        </div>
+      ) : (
+        ""
+      )}
       <ProductModal
         produto={selectedProduct}
         onClose={() => setSelectedProduct(null)}

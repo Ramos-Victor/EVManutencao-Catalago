@@ -12,7 +12,7 @@ export function Produtos() {
       <Loader />
       <WhatsappFloat />
       <Header />
-      <main className="produtos-page">
+      <main className="produtos-page" style={{ marginBottom: "1rem" }}>
         <Banner />
         <ProdutosList />
       </main>

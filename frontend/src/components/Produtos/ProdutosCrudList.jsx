@@ -34,7 +34,7 @@ export default function ProdutosCrudList({ onEdit, onDelete, token }) {
         }
 
         setProdutos(data.data || []);
-        setTotalPages(data.pagination.totalPages);
+        setTotalPages(data.pagination?.totalPages ?? 1);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -52,7 +52,7 @@ export default function ProdutosCrudList({ onEdit, onDelete, token }) {
       {error && <div className="form-error">{error}</div>}
 
       {!loading && !error && produtos.length === 0 && (
-        <div>Nenhum produto encontrado.</div>
+        <div style={{ marginTop: "1rem" }}>Nenhum produto encontrado.</div>
       )}
 
       {!loading && !error && produtos.length > 0 && (

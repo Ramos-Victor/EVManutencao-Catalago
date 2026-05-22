@@ -12,7 +12,7 @@ export function Servicos() {
       <Loader />
       <WhatsappFloat />
       <Header />
-      <main className="servicos-page">
+      <main className="servicos-page" style={{ marginBottom: "1rem" }}>
         <Banner />
         <ServicosList />
       </main>

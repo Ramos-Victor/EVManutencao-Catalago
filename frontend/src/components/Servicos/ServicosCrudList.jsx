@@ -35,7 +35,7 @@ export default function ServicosCrudList({ onEdit, onDelete, token }) {
 
         setServicos(data.data || []);
 
-        setTotalPages(data.pagination.totalPages);
+        setTotalPages(data.pagination?.totalPages ?? 1);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -53,7 +53,7 @@ export default function ServicosCrudList({ onEdit, onDelete, token }) {
       {error && <div className="form-error">{error}</div>}
 
       {!loading && !error && servicos.length === 0 && (
-        <div>Nenhum serviço encontrado.</div>
+        <div style={{ marginTop: "1rem" }}>Nenhum serviço encontrado.</div>
       )}
 
       {!loading && !error && servicos.length > 0 && (
